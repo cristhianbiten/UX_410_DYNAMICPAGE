@@ -1,0 +1,141 @@
+{
+  "_version": "1.37.0",
+  "sap.app": {
+    "id": "student28.sap.training.dynamicpage",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.15.3",
+      "toolsId": "7fe9cad1-f342-4b00-b86a-4decf1a78329"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/UX_TRAVEL_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": ["UX_TRAVEL_ANNO_MDL"],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "UX_TRAVEL_ANNO_MDL": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='UX_TRAVEL_ANNO_MDL',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/UX_TRAVEL_ANNO_MDL.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.96.33",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "student28.sap.training.dynamicpage.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "student28.sap.training.dynamicpage.view",
+        "controlAggregation": "beginColumnPages",
+        "controlId": "idFlexLayout",
+        "clearControlAggregation": true,
+        "bypassed": {
+          "target": ["NotFound"]
+        }
+      },
+      "routes": [
+        {
+          "name": "Overview",
+          "pattern": "",
+          "titleTarget": "",
+          "greedy": false,
+          "target": ["Overview"]
+        },
+        {
+          "name": "Carrier",
+          "pattern": "carriers/{carrierId}",
+          "titleTarget": "",
+          "greedy": false,
+          "target": ["Carrier"]
+        }
+      ],
+      "targets": {
+        "Overview": {
+          "viewType": "XML",
+          "viewName": "Overview",
+          "viewLevel": 1
+        },
+        "NotFound": {
+          "viewType": "XML",
+          "viewName": "NotFound",
+          "controlAggregation": "midColumnPages"
+        },
+        "Carrier": {
+          "viewType": "XML",
+          "viewName": "Carrier",
+          "viewLevel": 2,
+          "controlAggregation": "midColumnPages"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "student28.sap.training.dynamicpage.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}
