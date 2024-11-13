@@ -7,6 +7,7 @@
     xmlns:uxap="sap.uxap"
     controllerName="student28.sap.training.dynamicpage.controller.Carrier"
     xmlns:html="http://www.w3.org/1999/xhtml"
+    id="idView"
 >
     <uxap:ObjectPageLayout
         id="dynamicPageId"
@@ -18,7 +19,7 @@
         enableLazyLoading="false"
     >
         <uxap:headerTitle>
-            <uxap:ObjectPageDynamicHeaderTitle>
+            <uxap:ObjectPageDynamicHeaderTitle id="idHeaderTitle">
                 <uxap:expandedHeading>
                     <Title text="{Carrname}" />
                 </uxap:expandedHeading>
@@ -29,6 +30,7 @@
                     <FlexBox
                         alignItems="Start"
                         justifyContent="SpaceBetween"
+                        id="idCarrierDetails"
                     >
                         <items>
                             <layout:HorizontalLayout allowWrapping="true">
@@ -47,6 +49,8 @@
                             </layout:HorizontalLayout>
                         </items>
                     </FlexBox>
+                    <core:ExtensionPoint name="ux410_extension" />
+                    <Button text="{i18n>txtCarrierData}" press="onShowCarrierData"/>
                 </uxap:expandedContent>
                 <uxap:navigationActions>
                     <OverflowToolbarButton

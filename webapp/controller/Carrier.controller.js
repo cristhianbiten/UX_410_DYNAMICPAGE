@@ -4,6 +4,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
   return Controller.extend(
     "student28.sap.training.dynamicpage.controller.Carrier",
     {
+      metadata: {
+        methods: {
+          onShowCarrierData: {
+            public: true,
+            final: false,
+          },
+        },
+      },
+
       onInit: function () {
         var oRouter = this.getRouter();
         oRouter.getRoute("Carrier").attachMatched(this._onObjectMatched, this);
@@ -64,6 +73,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
                 .getProperty("/previousLayout")
             );
         }
+      },
+
+      onShowCarrierData: function () {
+        alert(
+          "You are currently viewing the data from carrier " +
+            this.getView().getBindingContext().getProperty("Carrname")
+        );
       },
 
       _onObjectMatched: function (oEvent) {

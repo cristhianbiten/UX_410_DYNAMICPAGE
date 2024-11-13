@@ -51,7 +51,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": false,
+    "flexEnabled": true,
     "dependencies": {
       "minUI5Version": "1.96.33",
       "libs": {
@@ -115,6 +115,7 @@
       "targets": {
         "Overview": {
           "viewType": "XML",
+          "viewId": "overview",
           "viewName": "Overview",
           "viewLevel": 1
         },
@@ -125,6 +126,7 @@
         },
         "Carrier": {
           "viewType": "XML",
+          "viewId": "carrier",
           "viewName": "Carrier",
           "viewLevel": 2,
           "controlAggregation": "midColumnPages"
